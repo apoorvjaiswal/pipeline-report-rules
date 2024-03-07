@@ -584,7 +584,7 @@
     "Name": "[Formatting] Objects should not start or end with a space",
     "Category": "Formatting",
     "Description": "Objects should not start or end with a space",
-    "Severity": 3,
+    "Severity": 0,
     "Scope": "Model, Table, Measure, Hierarchy, Perspective, Partition, DataColumn, CalculatedColumn",
     "Expression": "Name.StartsWith(\" \") or Name.EndsWith(\" \")",
     "CompatibilityLevel": 1200
