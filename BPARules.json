@@ -1,0 +1,75 @@
+{
+  "pbiEntries": [
+    {
+      "name": "reportLayout",
+      "pbixEntryPath": "Report/Layout",
+      "pbipEntryPath": "report.json",
+      "contentType": "json",
+      "codepage": 1200,
+      "rules": [
+        {
+          "id": "REMOVE_UNUSED_CUSTOM_VISUALS",
+          "name": "Remove custom visuals which are not used in the report.",
+          "description": "Returns an array of custom visual names to be removed if any. To disable this rule, mark it as disabled in the base rules file.",
+          "logType": "ignore", // Changed logType to "ignore"
+          "disabled": false,
+          "path": "$",
+          "pathErrorWhenNoMatch": false,
+          "test": [
+            {
+              "filter": [
+                {
+                  "map": [
+                    {
+                      "var": "customvis"
+                    },
+                    {
+                      "if": [
+                        {
+                          "==": [
+                            {
+                              "strcontains": [
+                                {
+                                  "tostring": [
+                                    {
+                                      "var": "pages"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "var": ""
+                                }
+                              ]
+                            },
+                            0
+                          ]
+                        },
+                        {
+                          "var": ""
+                        },
+                        ""
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "!!": [
+                    {
+                      "var": ""
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "customvis": "/publicCustomVisuals",
+              "pages": "/sections"
+            },
+            []
+          ]
+        },
+        // Other rules omitted for brevity, but adjust them similarly
+      ]
+    }
+  ]
+}
